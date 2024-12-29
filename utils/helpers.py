@@ -6,4 +6,4 @@ def sign(x: Union[int, float]):
     return (x > 0) - (x < 0)
 
 def print_parts(day: Day):
-    print(f"Day {day.day_num}: {day.part1():<10} {day.part2():<10}")
+    print(f"Day {day.day_num}: {day.part1():<20} {day.part2():<20}")
