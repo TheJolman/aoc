@@ -2,12 +2,8 @@ import os
 import re
 from typing import Any
 
-from days.base import Day
 
-
-class Day3(Day):
-    day_num = 3
-
+class Day3:
     file_path = os.path.join(os.path.dirname(__file__), "input")
     file_buffer: str
     with open(file_path, "r") as file:
@@ -46,16 +42,11 @@ class Day3(Day):
         do = True
         sum = 0
         for match_dict in all_matches:
-            if match_dict['pattern_idx'] == 2:
+            if match_dict["pattern_idx"] == 2:
                 do = False
-            elif match_dict['pattern_idx'] == 1:
+            elif match_dict["pattern_idx"] == 1:
                 do = True
-            elif match_dict['pattern_idx'] == 0 and do:
-                sum += self._mul(match_dict['match'])
+            elif match_dict["pattern_idx"] == 0 and do:
+                sum += self._mul(match_dict["match"])
 
         return sum
-
-
-if __name__ == "__main__":
-    day = Day3()
-    print(day.file_buffer)
