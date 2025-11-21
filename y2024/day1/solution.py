@@ -1,9 +1,6 @@
 import os
-from days.base import Day
 
-class Day1(Day):
-    day_num = 1
-
+class Day1():
     left: list[int] = []
     right: list[int] = []
 
@@ -31,3 +28,8 @@ class Day1(Day):
 
         # print(sum(similarities))
         return sum(similarities)
+
+if __name__ == "__main__":
+    sol = Day1
+    print(sol.part1())
+    print(sol.part2())
