@@ -1,12 +1,7 @@
 import os
 from utils.helpers import sign
-from days.base import Day
 
-class Day2(Day):
-    """Class for Day2"""
-
-    day_num = 2
-
+class Day2():
     levels: list[list[int]] = []
     file_path = os.path.join(os.path.dirname(__file__), 'input')
     with open(file_path, "r") as file:
@@ -59,9 +54,3 @@ class Day2(Day):
 
         # print(num_safe)
         return num_safe
-
-
-if __name__ == "__main__":
-    day = Day2()
-    day.part1()
-    day.part2()
