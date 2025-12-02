@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	// "math"
 	"os"
 	"strconv"
 )
@@ -21,14 +20,18 @@ func main() {
 		lines = append(lines, scanner.Text())
 	}
 
-	part1()
+	switch os.Args[1] {
+	case "1":
+		part1()
+	case "2":
+		part2()
+	}
 }
 
 func part1() {
 	password := 0
 	dial := 50
 
-	// prevFirstDigit := dial / 100 * 100
 	for _, line := range lines {
 		direction := string(line[0])
 		amount, _ := strconv.Atoi(string(line[1:]))
@@ -46,5 +49,29 @@ func part1() {
 }
 
 func part2() {
+	password := 0
+	dial := 50
 
+	for _, line := range lines {
+		prevPos := dial
+
+		direction := string(line[0])
+		amount, _ := strconv.Atoi(string(line[1:]))
+		switch direction {
+		case "L":
+			dial -= amount
+		case "R":
+			dial += amount
+		}
+
+		diff := dial - prevPos
+		timesCrossedZero := diff / 100 * 100
+		if timesCrossedZero < 0 {
+			timesCrossedZero *= -1
+		}
+
+		password += timesCrossedZero
+	}
+
+	fmt.Printf("Password: %d\n", password)
 }
