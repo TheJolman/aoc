@@ -53,7 +53,7 @@ func part2() {
 	dial := 50
 
 	for _, line := range lines {
-		prevPos := dial
+		prevPos := dial / 100 * 100
 
 		direction := string(line[0])
 		amount, _ := strconv.Atoi(string(line[1:]))
@@ -64,13 +64,13 @@ func part2() {
 			dial += amount
 		}
 
-		diff := dial - prevPos
-		timesCrossedZero := diff / 100 * 100
-		if timesCrossedZero < 0 {
-			timesCrossedZero *= -1
+		postPos := dial / 100 * 100
+		diff := postPos - prevPos
+		if diff < 0 {
+			diff *= -1
 		}
 
-		password += timesCrossedZero
+		password += diff / 100
 	}
 
 	fmt.Printf("Password: %d\n", password)
